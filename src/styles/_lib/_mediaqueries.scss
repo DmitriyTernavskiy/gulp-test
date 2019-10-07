@@ -1,0 +1,61 @@
+// Breakpoints
+$break-extra-small:     768px;
+$break-small:           1024px;
+$break-large:           1440px;
+
+@mixin media($media) {
+    @if $media == to-small {
+        @media only screen and (max-width: $break-small) {
+            @content;
+        }
+    } @else if $media == from-small {
+        @media only screen and (min-width: $break-extra-small) {
+            @content;
+        }
+    } @else if $media == small {
+        @media only screen and (min-width: $break-extra-small) and (max-width: $break-small) {
+            @content;
+        }
+    } @else if $media == extra-small {
+        @media only screen and (max-width: $break-extra-small - 1) {
+            @content;
+        }
+    } @else if $media == extra-small-portrait {
+        @media only screen and (max-width: $break-extra-small - 1) and (orientation: portrait) {
+            @content;
+        }
+    } @else if $media == extra-small-landscape {
+        @media only screen and (max-width: $break-extra-small - 1) and (orientation: landscape) {
+            @content;
+        }
+    } @else if $media == to-medium {
+        @media only screen and (max-width: $break-large - 1) {
+            @content;
+        }
+    } @else if $media == small-medium {
+        @media only screen and (min-width: $break-extra-small) and (max-width: $break-large - 1) {
+            @content;
+        }
+    } @else if $media == from-medium {
+        @media only screen and (min-width: $break-small + 1) {
+            @content;
+        }
+    } @else if $media == medium {
+        @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+            @content;
+        }
+    } @else if $media == large {
+        @media only screen and (min-width: $break-large) {
+            @content;
+        }
+    } @else {
+        @warn "Incorrect @media: #{$media}";
+    }
+}
+
+// Custom mixin for mediaqueries
+@mixin media-to( $media-min, $media-max, $media-orientation ) {
+    @media only screen and (min-width: $media-min) and (max-width: $media-max) and (orientation: $media-orientation) {
+        @content;
+    }
+}

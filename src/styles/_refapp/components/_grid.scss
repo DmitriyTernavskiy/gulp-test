@@ -1,0 +1,111 @@
+$columns: 12;
+
+@function gutter-compensation($gutter-width) {
+    @return ($gutter-width * -0.5);
+}
+
+@for $i from 1 through $columns {
+    .g-col-#{$i} {
+        width: ((100 / $columns) * $i) * 1%;
+        padding: map-get($gutters, '-lg');
+    }
+}
+
+@for $i from 1 through $columns {
+    @include media(large) {
+        .g-col-#{$i}-lg {
+            width: ((100 / $columns) * $i) * 1%;
+        }
+    }
+}
+
+@for $i from 1 through $columns {
+    @include media(medium) {
+        .g-col-#{$i}-md {
+            width: ((100 / $columns) * $i) * 1%;
+        }
+    }
+}
+
+@for $i from 1 through $columns {
+    @include media(small) {
+        .g-col-#{$i}-sm {
+            width: ((100 / $columns) * $i) * 1%;
+        }
+    }
+}
+
+@for $i from 1 through $columns {
+    @include media(extra-small) {
+        .g-col-#{$i}-xs {
+            width: ((100 / $columns) * $i) * 1%;
+        }
+    }
+}
+
+// make grid using styles(not class)
+
+$col-count: 12;
+
+@function g-col($columns) {
+    @return unquote((100/$col-count) * $columns + "%");
+}
+
+@mixin g-col($columns) {
+    width: g-col($columns);
+}
+
+.g-row {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 -#{map-get($gutters, '-lg')};
+
+    &.no-gutter {
+        margin: 0;
+        [class*='g-col'] {
+            padding: 0;
+        }
+    }
+
+    @include media(medium) {
+        margin: 0 -#{map-get($gutters, '-md')};
+    }
+
+    @include media(small) {
+        margin: 0 -#{map-get($gutters, '-sm')};
+    }
+
+    @include media(extra-small) {
+        margin: 0 -#{map-get($gutters, '-xs')};
+    }
+
+    & > div,
+    & > li,
+    & > a {
+        padding: 0 #{map-get($gutters, '-lg')};
+
+        @include media(medium) {
+            padding: 0 #{map-get($gutters, '-md')};
+        }
+    
+        @include media(small) {
+            padding: 0 #{map-get($gutters, '-sm')};
+        }
+    
+        @include media(extra-small) {
+            padding: 0 #{map-get($gutters, '-xs')};
+        }
+    }
+}
+
+.no-gutter-xs {
+    @include media(extra-small) {
+        margin: 0;
+
+        & > div,
+        & > li,
+        & > a {
+            padding: 0;
+        }
+    }
+}

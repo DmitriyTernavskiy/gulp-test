@@ -1,0 +1,21 @@
+.b-expandable {
+    position: relative;
+}
+
+.b-expandable__toggle,
+.b-accordion__item-header,
+.b-tab {
+    cursor: pointer;
+}
+
+.b-expandable__content,
+.b-accordion__item-content,
+.tab-content {
+    display: none;
+}
+
+.tabs__content .tab-content {
+    &.m-expanded {
+        display: block;
+    }
+}

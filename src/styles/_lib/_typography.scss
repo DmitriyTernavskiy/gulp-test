@@ -1,0 +1,10 @@
+//----------------------------------------------------------------------
+// Typography mixins
+//----------------------------------------------------------------------
+
+@mixin t-body() {
+    font-family: $font-family-main;
+    font-weight: $font-regular;
+    font-size: $font-size-regular;
+    color: $color-text;
+}

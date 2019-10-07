@@ -1,0 +1,18 @@
+.h-visually-hidden,
+.visually-hidden {
+    @include visually-hidden;
+}
+
+#{$const-disable-scroll},
+#{$const-disable-scroll} body {
+    @include disable-page-scroll();
+}
+
+#{$const-disable-scroll} .l-page {
+    height: 100%;
+    overflow: hidden;
+}
+
+#{$const-sticky} {
+    position: fixed;
+}

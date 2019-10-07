@@ -1,0 +1,21 @@
+// Transition for parallax component
+.js-parallax__element {
+    transition: transform 0.1s linear;
+}
+
+.scrolled__element {
+    transition: transform 3s, opacity 3s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(rem(200));
+  //  opacity: 0.6;
+    will-change: transform;
+
+    @include media(extra-small) {
+        transform: translateY(rem(100));
+    }
+
+    &.m-scrolled {
+        transform: translateY(0);
+      //  opacity: 1;
+    }
+}

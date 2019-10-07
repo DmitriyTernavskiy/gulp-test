@@ -1,0 +1,60 @@
+#{$const-hidden},
+.hidden {
+    display: none !important;
+
+    &__extra-small {
+        @media (--extra-small) {
+            display: none !important;
+        }
+    }
+
+    &__small {
+        @media (--small) {
+            display: none !important;
+        }
+    }
+
+    &__medium {
+        @media (--medium) {
+            display: none !important;
+        }
+    }
+
+    &__large {
+        @media (--large) {
+            display: none !important;
+        }
+    }
+}
+
+.h-visible,
+.visible {
+    &__extra-small {
+        @media (--from-small) {
+            display: none !important;
+        }
+    }
+
+    &__small {
+        @media (--extra-small), (--from-medium) {
+            display: none !important;
+        }
+    }
+
+    &__medium {
+        @media (--to-small), (--large) {
+            display: none !important;
+        }
+    }
+
+    &__large {
+        @media (--to-medium) {
+            display: none !important;
+        }
+    }
+}
+
+.h-visually-hidden,
+.visually-hidden {
+    @include visually-hidden;
+}

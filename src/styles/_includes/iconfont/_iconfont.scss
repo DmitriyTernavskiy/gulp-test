@@ -1,0 +1,36 @@
+[class^="<%= cssClass%>-"], [class*=" <%= cssClass%>-"], %g-<%= cssClass%> {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "<%= fontName %>" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin <%= cssClass%>($filename, $insert: before) {
+  &:#{$insert} {
+    @extend %g-<%= cssClass%>;
+    
+    content: <%= cssClass%>-char($filename);
+  }
+}
+
+@function <%= cssClass%>-char($filename) {
+$char: "";
+<% _.each(glyphs, function(glyph) { %>
+@if $filename == <%= glyph.fileName %> {
+  $char: "\<%= glyph.codePoint.toString(16).toUpperCase() %>";
+}<% }); %>
+
+@return $char;
+}
+
+<% _.each(glyphs, function(glyph) { %>.<%= cssClass%>-<%= glyph.fileName %> {
+@include <%= cssClass%>(<%= glyph.fileName %>);
+}
+<% }); %>

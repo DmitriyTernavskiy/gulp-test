@@ -1,0 +1,35 @@
+// Convert px to rem
+@function rem($px, $base: $baseline) {
+    @return (strip-unit($px) / strip-unit($base)) * 1rem;
+}
+
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@function color($color-name:default, $color-variant:null, $opacity:null, $palette: $color-palette) {
+    $color: null;
+    $color-spectrum: map-get($color-palette, $color-name);
+    $alpha: if(type-of($opacity) == "number", $opacity, map-get($color-opacity, $opacity));
+
+    @if ($color-variant != null) {
+        $color: map-get($color-spectrum, $color-variant);
+    } @else if $color-name != default {
+        $color: map-get($color-spectrum, base);
+    } @else {
+        $color: $color-spectrum;
+    }
+
+    @if ($opacity != null) {
+        $color: rgba($color, $alpha);
+    }
+
+    @return $color;
+}

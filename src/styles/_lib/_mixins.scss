@@ -1,0 +1,161 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@mixin block-proportions($value: 1, $pseudo:before) {
+    &::#{$pseudo} {
+        content: "";
+        float: left;
+        padding-bottom: percentage($value);
+    }
+}
+
+@mixin l-site-width {
+    max-width: $width-site-max;
+    min-width: $width-site-min;
+    width: percentage(1280/1440);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media(to-small) {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: $padding-site-width;
+        padding-right: $padding-site-width;
+    }
+}
+
+@mixin underline {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+// Custom scrollbars
+@mixin custom-scrollbar($bg-color: $color-gray-5, $thumb-color: $color-white) {
+    @include chrome-scrollbar($bg-color, $thumb-color);
+    @include ie-scrollbar($bg-color, $thumb-color);
+}
+
+@mixin chrome-scrollbar($bg-color: silver, $thumb-color: gray) {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb-color;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $bg-color;
+        border-radius: 10px;
+    }
+}
+
+@mixin ie-scrollbar($bg-color: white, $thumb-color: gray) {
+    @if $bg-color == transparent {
+        $bg-color: white;
+    } //fix - seems ie doesnt support transparent
+    scrollbar-base-color: $thumb-color;
+    scrollbar-face-color: $thumb-color;
+    scrollbar-arrow-color: $bg-color;
+    scrollbar-highlight-color: $bg-color;
+    scrollbar-shadow-color: $bg-color;
+    scrollbar-dark-shadow-color: $bg-color;
+    scrollbar-track-color: $bg-color;
+}
+
+// End custom scrollbars
+
+@mixin i-font($icon: false, $position: "before", $only-glyph: false) {
+    &:#{$position} {
+        @if $icon {
+            content: icon-char($icon);
+        }
+        @if $only-glyph == false {
+            font-family: "icons";
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+        }
+        @content;
+    }
+}
+
+@mixin arrow($dir, $base-width, $length, $color) {
+    width: 0; height: 0;
+    border: ($base-width / 2) solid transparent;
+
+    @if $dir == top {
+        border-top: none;
+        border-bottom-width: $length;
+        border-bottom-color: $color;
+    } @else if $dir == right {
+        border-right: none;
+        border-left-width: $length;
+        border-left-color: $color;
+    } @else if $dir == bottom {
+        border-top-width: $length;
+        border-bottom: none;
+        border-top-color: $color;
+    } @else if $dir == left {
+        border-right-width: $length;
+        border-left: none;
+        border-right-color: $color;
+    }
+}
+
+@mixin hover($trn-prop: all, $trn-d: $trn-d-regular, $withTouchClass: false) {
+    transition-duration: $trn-d;
+    transition-property: $trn-prop;
+
+    @if $withTouchClass {
+        .d-non-touch &:hover {
+            @content;
+        }
+    } @else {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin disable-page-scroll() {
+    &,
+    body {
+        height: 100%;
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* Mixin to cut off the rest of one-line text with dots */
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

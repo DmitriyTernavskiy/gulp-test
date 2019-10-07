@@ -1,0 +1,21 @@
+@mixin b-content-list--mark() {
+    text-align: left;
+
+    & > li {
+        margin-top: rem(6);
+        position: relative;
+        padding-left: rem(20);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        @include i-font(u-list-bullet) {
+            color: color(orange);
+            font-size: rem(8);
+            position: absolute;
+            left: 0;
+            top: 6px;
+        }
+    }
+}

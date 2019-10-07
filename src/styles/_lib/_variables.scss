@@ -1,0 +1,145 @@
+//----------------------------------------------------------------------
+// Color Palette
+//----------------------------------------------------------------------
+
+$color-palette: (
+    default       : (base: #000),
+    black         : (base: #000),
+    blue          : (base: #0073b1),
+    green         : (base: #209b94, light: #1b9b98, dark: #148081, darken: #156568),
+    grey          : (base: #525252, light: #f7f7f7, light2: #e7e7e7, medium: #878787, gainsboro: #dbdbdb, mortar: #525252),
+    orange        : (base: #f5883a, single: #fe9946),
+    brown         : (base: #ab501b),
+    red           : (base: #cc0000),
+    white         : (base: #fff)
+);
+
+$color-opacity: (
+    light: 0.2
+);
+
+$color-text         : color(grey);
+$color-text-hover   : color(black);
+$color-link         : $color-text;
+$color-error        : color(red);
+$color-success      : color(green);
+
+// Z-indexes
+//----------------------------------------------------------------------
+$z-max                      : 1000;
+$z-min                      : 1;
+$z-small                    : 2;
+$z-medium                   : 5;
+$z-large                    : 10;
+$z-zero                     : 0;
+$z-minus                    : -1;
+
+$z-header          : $z-large;
+$z-main-nav        : $z-header + 1;
+$z-overlay         : $z-header - 1;
+$z-modal           : $z-max;
+$z-modal-wrapper   : $z-modal;
+$z-modal-overlay   : $z-modal - 1;
+
+
+// Transition duration
+//----------------------------------------------------------------------
+$trn-d-small     : 0.15s;
+$trn-d-regular   : 0.3s;
+$trn-d-medium    : 0.45s;
+$trn-d-large     : 0.6s;
+
+// Font families
+//----------------------------------------------------------------------
+
+$font-family-main           : "HelveticaNeueLTStd", "Arial", "Helvetica", sans-serif;
+
+// Font weights
+//----------------------------------------------------------------------
+
+$font-regular : 400;
+$font-bold     : 600;
+$font-heavy    : 700;
+
+// Font sizes
+//----------------------------------------------------------------------
+
+$font-size-base-html    : 16px;
+$font-size-base-browser : 16;
+
+@function rem($px, $base: $font-size-base-browser) {
+    @return ($px / $base) * 1rem;
+}
+
+@function em($px, $context: $font-size-base-browser) {
+    @return #{$px/$context}em;
+}
+
+$font-size-smaller   : rem(11);
+$font-size-small     : rem(13);
+$font-size-small-up  : rem(14);
+$font-size-regular   : rem(16);
+$font-size-medium    : rem(18);
+$font-size-large     : rem(20);
+$font-size-large-up  : rem(24);
+$font-size-larger    : rem(30);
+$font-size-larger-up : rem(40);
+$font-size-big-medium: rem(45);
+$font-size-big       : rem(50);
+
+// Line height
+//----------------------------------------------------------------------
+$line-height-large : rem(22);
+$line-height-medium : rem(18);
+
+// Border radiuses
+//----------------------------------------------------------------------
+
+$border-radius-regular : 22px;
+$border-radius-medium  : 10px;
+$border-radius-small   : 4px;
+
+$border-radius-btn       : $border-radius-regular;
+$border-radius-accordion : $border-radius-small;
+
+// Shadows
+//----------------------------------------------------------------------
+
+$shadow-regular-small   : 0 0 7.9px 5.1px rgba(0, 0, 0, 0.11);
+$shadow-regular         : 0 9px 13px 0 rgba(0, 0, 0, 0.34);
+$shadow-regular-medium  : 0 13px 13px 0 rgba(0, 0, 0, 0.34);
+$shadow-regular-large   : 0 18px 13px 0 rgba(0, 0, 0, 0.34);
+
+$shadow-btn           : $shadow-regular;
+$shadow-btn-hover     : $shadow-regular-large;
+$shadow-btn-focus     : $shadow-regular-medium;
+
+$shadow-faq-accordion : $shadow-regular;
+
+
+// Site width
+//----------------------------------------------------------------------
+
+$width-site-max  : 1360px;
+$width-site-min  : 320px;
+
+$queries: (
+    "-xs": "--extra-small",
+    "-sm": "--small",
+    "-md": "--medium",
+    "-lg": "--large"
+);
+
+$gutters: (
+    "-xs": rem(16),
+    "-sm": rem(16),
+    "-md": rem(16),
+    "-lg": rem(16)
+);
+
+$outer-margins: (
+    "-xs": rem(16),
+    "-sm": rem(40),
+    "-md": rem(40),
+    "-lg": rem(40)
+);

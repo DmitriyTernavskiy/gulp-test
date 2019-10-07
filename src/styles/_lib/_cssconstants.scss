@@ -1,0 +1,25 @@
+//----------------------------------------------------------------------
+// CSS global modificators
+// They used to add styles to the components states that controlled via JS logic.
+// All constants should be synced with cssconstants.js
+//----------------------------------------------------------------------
+
+$const-active:                 ".m-active";
+$const-closing:                ".m-closing";
+$const-disable-scroll:         ".h-disable-scroll";
+$const-disabled:               ".m-disabled";
+$const-expanded:               ".m-expanded";
+$const-focus:                  ".m-focus";
+$const-js-enabled:             ".js-enabled";
+$const-hidden:                 ".h-hidden";
+$const-hover:                  ".m-hover";
+$const-loaded:                 ".m-loaded";
+$const-loading:                ".m-loading";
+$const-mobile-megamenu-active: ".b-megamenu--active";
+$const-open:                   ".m-open";
+$const-selected:               ".m-selected";
+$const-success:                ".m-success";
+$const-sticky:                 ".m-stuck";
+$const-scrolled:               ".m-scrolled";
+$const-visible:                ".h-hidden";
+$const-visually-hidden:        ".h-visually-hidden";

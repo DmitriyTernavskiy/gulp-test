@@ -1,0 +1,128 @@
+.b-carousel {
+    visibility: hidden;
+    width: 100%;
+    font-size: 0;
+    white-space: nowrap;
+
+    &.slick-initialized {
+        visibility: visible;
+    }
+
+    &__wrapper {
+        position: relative;
+    }
+
+    &__item {
+        display: inline-block;
+        font-size: $font-size-regular;
+        max-width: 100%;
+        vertical-align: top;
+
+        .slick-slide & {
+            width: 100%;
+        }
+
+        .slick-slide &--no-image {
+            display: flex !important;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
+.slick {
+    &-track,
+    &-slider {
+        overflow: hidden;
+    }
+
+    &-track {
+        font-size: 0;
+        display: flex;
+    }
+
+    &-slide {
+        // display: inline-block;
+        // vertical-align: middle;
+        font-size: $font-size-regular;
+        white-space: normal;
+    }
+
+    &-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: $z-min;
+        width: 35px;
+        height: 35px;
+        font-size: 0;
+        border-radius: 100%;
+        color: color(white);
+
+        @include hover(color) {
+            color: color(orange, single);
+        }
+
+        &__wrapper {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 0;
+        }
+
+        &::before {
+            font-size: 35px;
+        }
+    }
+
+    &-prev {
+        @include i-font(arrow-left) {
+            margin-right: 5px;
+        }
+        left: 0;
+    }
+
+    &-next {
+        @include i-font(arrow-right) {
+            margin-left: 5px;
+        }
+        right: 0;
+    }
+
+    &-dots {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: rem(45);
+
+        @include media(medium) {
+            bottom: rem(30);
+        }
+
+        li {
+            display: inline-block;
+            vertical-align: middle;
+
+            &.slick-active button {
+                background-color: color(orange, single);
+            }
+        }
+
+        button {
+            width: rem(8);
+            height: rem(8);
+            margin: 0 rem(12);
+            background-color: color(white);
+            border-radius: 100%;
+            font-size: 0;
+
+            @include hover(background-color) {
+                background-color: color(orange, single);
+            }
+        }
+    }
+}
